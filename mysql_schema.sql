@@ -2,7 +2,7 @@
 -- Converted from Supabase PostgreSQL schema
 
 -- Use the database
-USE fitness_app;
+USE zeni_saas;
 
 -- 1. Users table
 CREATE TABLE IF NOT EXISTS users (
@@ -65,13 +65,13 @@ CREATE INDEX IF NOT EXISTS idx_chat_messages_user_id ON chat_messages(user_id);
 CREATE INDEX IF NOT EXISTS idx_workouts_user_id ON workouts(user_id);
 
 -- Insert sample data for testing (optional)
-INSERT INTO users (name, email, password) VALUES 
-('Test User', 'test@example.com', 'password123')
+--INSERT INTO users (name, email, password) VALUES 
+--(name, email, password)
 ON DUPLICATE KEY UPDATE name = VALUES(name);
 
 -- Verify tables were created
 SELECT TABLE_NAME, TABLE_SCHEMA
 FROM information_schema.tables 
-WHERE TABLE_SCHEMA = 'fitness_app'
+WHERE TABLE_SCHEMA = 'zeni_saas'
 AND TABLE_NAME IN ('users', 'status_checks', 'password_reset_tokens', 'chat_messages', 'workouts')
 ORDER BY TABLE_NAME;

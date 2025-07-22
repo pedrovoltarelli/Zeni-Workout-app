@@ -116,6 +116,8 @@ async def get_status_checks():
     data = mysql_client.find_all('status_checks')
     return [StatusCheck(**item) for item in data]
 
+import bcrypt
+
 @api_router.post("/register")
 async def register(user_data: UserCreate):
     existing_user = mysql_client.find_one('users', {'email': user_data.email})

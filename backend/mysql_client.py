@@ -13,16 +13,14 @@ class MySQLClient:
     def _create_connection_pool(self):
         try:
             config = {
-                'host': os.environ.get('MYSQL_HOST', 'localhost'),
-                'database': os.environ.get('MYSQL_DATABASE', 'zeni_saas'),
-                'user': os.environ.get('MYSQL_USER', 'root'),
-                'password': os.environ.get('MYSQL_PASSWORD', ''),
-                'port': int(os.environ.get('MYSQL_PORT', '3306')),
-                'pool_name': 'app_pool',
-                'pool_size': 5,
-                'pool_reset_session': True,
-                'autocommit': True
-            }
+    "user": os.getenv("MYSQL_USER", "root"),
+    "password": os.getenv("MYSQL_PASSWORD", "Pxdrinmv01!"),
+    "host": os.getenv("MYSQL_HOST", "localhost"),
+    "database": os.getenv("MYSQL_DATABASE", "zeni_saas"),
+    "pool_name": "mypool",
+    "pool_size": 5
+}
+            
             return pooling.MySQLConnectionPool(**config)
         except Error as e:
             raise Exception(f"Error creating MySQL connection pool: {e}")
